@@ -43,8 +43,10 @@
                             <div class="mb-3">
                                 <label for="paperType" class="form-label">Paper Type (Choose Grammage)</label>
                                 <select class="form-select" id="paperType" required>
+                                    <option value="70">70 gsm</option>
                                     <option value="80">80 gsm</option>
                                     <option value="90">90 gsm</option>
+                                    <option value="115">115 gsm</option>
                                 </select>
                                 <div class="invalid-feedback">Please select a paper type</div>
                             </div>
@@ -120,7 +122,23 @@
             let totalWeight = (pageArea * paperWeight * pages) / 2;
 
             // Apply base multiplier based on paper type
-            const baseMultiplier = paperWeight === 80 ? 1.06 : 1.08;
+            let baseMultiplier;
+            switch (paperWeight) {
+                case 70:
+                    baseMultiplier = 1.04;  // 4% addition for binding materials on lighter paper
+                    break;
+                case 80:
+                    baseMultiplier = 1.06;  // 6% addition for standard paper
+                    break;
+                case 90:
+                    baseMultiplier = 1.08;  // 8% addition for heavier paper
+                    break;
+                case 115:
+                    baseMultiplier = 1.10;  // 10% addition for premium paper
+                    break;
+                default:
+                    baseMultiplier = 1.06;  // Default to standard paper multiplier
+            }
             totalWeight = totalWeight * baseMultiplier;
 
             // Add fixed case weight if cased binding is selected
