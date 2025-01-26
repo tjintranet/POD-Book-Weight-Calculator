@@ -39,6 +39,7 @@ The POD (Print on Demand) Book Weight Calculator is a web application that provi
    - Input type: Select dropdown
    - HTML ID: `paperType`
    - Options:
+     * 60 gsm
      * 70 gsm
      * 80 gsm
      * 90 gsm
