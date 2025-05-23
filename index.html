@@ -43,6 +43,7 @@
                             <div class="mb-3">
                                 <label for="paperType" class="form-label">Paper Type (Choose Grammage)</label>
                                 <select class="form-select" id="paperType" required>
+                                    <option value="52">52 gsm</option>
                                     <option value="60">60 gsm</option>
                                     <option value="70">70 gsm</option>
                                     <option value="80">80 gsm</option>
@@ -125,6 +126,9 @@
             // Apply base multiplier based on paper type
             let baseMultiplier;
             switch (paperWeight) {
+                case 52:
+                    baseMultiplier = 1.04;  // 4% addition for binding materials on lighter paper
+                    break;
                 case 60:
                     baseMultiplier = 1.04;  // 4% addition for binding materials on lighter paper
                     break;    
